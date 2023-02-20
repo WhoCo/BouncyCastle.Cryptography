@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build"
+		 Framework="WhoCo.Builder"
+		 xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<TargetName>BouncyCastle.Cryptography</TargetName>
+		<OutputPath>..\..\..\Build\$(Configuration)\Library\</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DebugSymbols>True</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>False</Optimize>
+		<DefineConstants>DEBUG;</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DebugSymbols>True</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>True</Optimize>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageVersion>2.0.0</PackageVersion>
+		<PackageVersionMetadata></PackageVersionMetadata>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageProperties Include="whoco.system.packaging">
+			<Description>Bouncy Castle Cryptography Library</Description>
+			<Copyright>2000-2022 The Legion of the Bouncy Castle Inc.</Copyright>
+			<ProjectURL>https://www.bouncycastle.org/csharp/</ProjectURL>
+			<Maintainers>Nicholas Freeman &lt;freeman@whoco.org&gt;</Maintainers>
+			<License>https://www.bouncycastle.org/csharp/licence.html</License>
+			<SourceRepository>https://github.com/WhoCo/BouncyCastle.Cryptography.git</SourceRepository>
+			<DistributionRepository>https://distro.whoco.org/Linus.Repository.Git</DistributionRepository>
+		</PackageProperties>
+		<ProjectReference Include="BouncyCastle.Cryptography.project" />
+		<Resource Include="Resources/**/*">
+			<Public>false</Public>
+		</Resource>
+	</ItemGroup>
+
+	<Import Package="WhoCo.Development" Project="WhoCo.Development.Package.targets" />
+</Project>

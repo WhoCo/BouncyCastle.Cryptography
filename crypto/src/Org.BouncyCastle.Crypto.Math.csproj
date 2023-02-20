@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+    
+    <Import Project="Org.BouncyCastle.Crypto.proj"/>
+    
+    <ItemGroup Condition=" '$(Configuration)' == 'Buildstrap' ">
+        <None Include="Org.BouncyCastle.Crypto.proj"/>
+        <Compile Include="math/**/*.cs"/>
+        <Compile Remove="math/BigInteger.cs" />
+    </ItemGroup>
+</Project>

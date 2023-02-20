@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" Framework="WhoCo.Builder" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<ProjectGuid>{552062A0-0BE5-4197-A600-73B362D37CDB}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Org.BouncyCastle</RootNamespace>
+		<AssemblyName>Eclipse.Git</AssemblyName>
+		<OutputPath>.\bin\$(Configuration)\</OutputPath>
+		<NoWarn>-422</NoWarn>
+	</PropertyGroup>
+
+	<Import Project="WhoCo.Development.Compiler.CP.targets" Package="WhoCo.Development" />
+</Project>

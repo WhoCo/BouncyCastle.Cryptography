@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+    
+    <Import Project="Org.BouncyCastle.Crypto.proj"/>
+    
+    <ItemGroup Condition=" '$(Configuration)' == 'Buildstrap' ">
+        <None Include="Org.BouncyCastle.Crypto.proj"/>
+        <Compile Include="util/**/*.cs"/>
+        <Compile Include="crypto/util/**/*.cs"/>
+        <Compile Include="math/**/*.cs"/>
+        <Compile Remove="util/BigIntegers.cs" />
+        <Compile Remove="math/BigInteger.cs" />
+        <Compile Remove="crypto/util/CipherFactory.cs" />
+        <Compile Remove="crypto/util/AlgorithmIdentifierFactory.cs" />
+        <Compile Remove="crypto/util/CipherKeyGeneratorFactory.cs" />
+        <Compile Remove="crypto/util/OpenSshPrivateKeyUtilities.cs" />
+        <Compile Remove="crypto/util/OpenSshPublicKeyUtilities.cs" />
+        <Compile Remove="crypto/util/SshNamedCurves.cs" />
+        <Compile Remove="crypto/util/*Curve.cs" />
+        <Compile Remove="crypto/util/*Field.cs" />
+
+        <ProjectReference Include="..\..\..\Microsoft.Net.Transition\Microsoft.Net.Transition.csproj" Aliases="Microsoft_Net_Transition"/>
+        <ProjectReference Include="..\..\..\WhoCo.Data.IO\WhoCo.Data.IO.csproj"/>
+    </ItemGroup>
+</Project>

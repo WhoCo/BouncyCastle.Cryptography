@@ -1,0 +1,95 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="BouncyCastle.Crypto.csproj"/>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;</TargetFrameworks>
+        <Configurations>Buildstrap;</Configurations>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Buildstrap' ">
+        <TargetFrameworks>net6.0;</TargetFrameworks>
+        <Platforms>AnyCPU;</Platforms>
+        <SignAssembly>false</SignAssembly>
+        <DefineConstants>DEBUG;TRACE;__MonOS__BUILDSTRAP</DefineConstants>
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- This library checks for platform specific define that must be
+            turned off for use with MonOS.
+        -->
+        <DisableImplicitFrameworkDefines>true</DisableImplicitFrameworkDefines>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(Configuration)' == 'Buildstrap' ">
+        <Content Include="BouncyCastle.Crypto.csproj"/>
+
+        <PackageReference Remove="Microsoft.SourceLink.GitHub" />
+        <PackageReference Remove="Nerdbank.GitVersioning"/>
+        <PackageReference Remove="Microsoft.NETFramework.ReferenceAssemblies"/>
+
+        <ProjectReference Include="..\..\..\Microsoft.Net.Transition\Microsoft.Net.Transition.csproj" Aliases="Microsoft_Net_Transition"/>
+        <ProjectReference Include="..\..\..\WhoCo.Data.IO\WhoCo.Data.IO.csproj"/>
+
+        <Compile Remove="GlobalUsings.cs"/>
+        <None Include="GlobalUsings.cs"/>
+
+        <Compile Remove="**/*.cs"/>
+        <EmbeddedResource Remove="**/*.*" />
+        <EmbeddedResource Remove="**/*.*" />
+
+        <!--        <None Remove="**/*.cs"/>-->
+<!--        <None Remove="**/*.properties"/>-->
+<!--        <None Remove="pqc\crypto\**\*.bz2"/>-->
+<!--        <EmbeddedResource Include="**\*.properties"/>-->
+<!--        <EmbeddedResource Include="pqc\crypto\**\*.bz2"/>-->
+
+<!--        <None Include="..\..\LICENSE.md" Pack="true" PackagePath="\"/>-->
+<!--        <None Include="..\..\packageIcon.png" Pack="true" PackagePath="\"/>-->
+<!--        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>-->
+
+<!--        <Compile Remove="security/JksStore.cs"/>-->
+<!--        <None Include="security/JksStore.cs"/>-->
+<!--        <Compile Remove="pkix/**/*"/>-->
+<!--        <None Include="pkix/**/*"/>-->
+<!--        <Compile Remove="util/io/BinaryWriters.cs"/>-->
+<!--        <None Include="util/io/BinaryWriters.cs"/>-->
+<!--        <Compile Remove="pqc/crypto/sike/**/*"/>-->
+<!--        <None Include="pqc/crypto/sike/**/*"/>-->
+<!--        <Compile Remove="pqc/**/*"/>-->
+<!--        <None Include="pqc/**/*"/>-->
+<!--        <Compile Remove="util/io/pem/PemReader.cs"/>-->
+<!--        <None Include="util/io/pem/PemReader.cs"/>-->
+
+        <!--		<Compile Remove="openssl/PEMReader.cs" />-->
+        <!--		<None Include="openssl/PEMReader.cs" />-->
+<!--        <Compile Remove="openssl/**/*"/>-->
+<!--        <None Include="openssl/**/*"/>-->
+
+<!--        <Compile Remove="cms/CMSProcessableFile.cs"/>-->
+<!--        <None Include="cms/CMSProcessableFile.cs"/>-->
+
+<!--        <Compile Remove="crypto/parameters/SkeinParameters.cs"/>-->
+<!--        <None Include="crypto/parameters/SkeinParameters.cs"/>-->
+<!--        <Compile Remove="crypto/digests/SkeinDigest.cs"/>-->
+<!--        <None Include="crypto/digests/SkeinDigest.cs"/>-->
+<!--        <Compile Remove="crypto/digests/SkeinEngine.cs"/>-->
+<!--        <None Include="crypto/digests/SkeinEngine.cs"/>-->
+<!--        <Compile Remove="crypto/macs/SkeinMac.cs"/>-->
+<!--        <None Include="crypto/macs/SkeinMac.cs"/>-->
+
+<!--        <Compile Remove="util/io/BinaryReaders.cs"/>-->
+<!--        <None Include="util/io/BinaryReaders.cs"/>-->
+
+<!--        <Compile Remove="tls/**/*"/>-->
+<!--        <None Include="tls/**/*"/>-->
+
+        <!-- DES -->
+        <!--		<Compile Remove="crypto/engines/DesEngine.cs" />-->
+        <!--		<None Include="crypto/engines/DesEngine.cs" />-->
+        <!--		<Compile Remove="crypto/engines/DesEdeWrapEngine.cs" />-->
+        <!--		<None Include="crypto/engines/DesEdeWrapEngine.cs" />-->
+        <!--		<Compile Remove="crypto/engines/DesEdeEngine.cs" />-->
+        <!--		<None Include="crypto/engines/DesEdeEngine.cs" />-->
+    </ItemGroup>
+</Project>
